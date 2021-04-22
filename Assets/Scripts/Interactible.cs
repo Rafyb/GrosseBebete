@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class Interactible : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string message = "";
 
     private void OnMouseEnter()
     {
@@ -28,6 +19,6 @@ public class Interactible : MonoBehaviour
 
     void OnMouseDown()
     {
-        Game.Instance.Help(transform);
+        Game.Instance.OpenText(message);
     }
 }

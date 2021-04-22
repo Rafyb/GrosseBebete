@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Arts/Fx/Animations.meta
 guid: a76d5d3708961054ebceed780e3d6c00
 folderAsset: yes
+=======
+guid: 1216b2357c41d1f44b82903e24015fde
+>>>>>>> 634b2a12cb364756471622620114a94735e03a6c:Assets/Arts/Fx/Shaders.meta~bb9ae3a46c304d4669d777a760cd990036ada79f.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
