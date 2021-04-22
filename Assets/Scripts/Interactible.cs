@@ -42,6 +42,12 @@ public class Interactible : MonoBehaviour
             Game.Instance.CloseText();
             Game.Instance.Help(transform);
         }
+        if (type == TypeRessource.Box && Game.Instance.box >= nb)
+        {
+            Game.Instance.box -= nb;
+            Game.Instance.CloseText();
+            Game.Instance.Help(transform);
+        }
     }
 
     private void OnTriggerExit(Collider other)

@@ -120,7 +120,7 @@ public class Controller : MonoBehaviour
             {
                 if (!item.recoltable) return;
                 if (item.type == TypeRessource.Tree) Game.Instance.tree++;
-
+                if (item.type == TypeRessource.Box) Game.Instance.box++;
                 Collectables.RemoveAt(i);
                 Destroy(gameobject);
                 Game.Instance.UpdateUI();
