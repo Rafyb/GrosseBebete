@@ -10,11 +10,14 @@ public class Game : MonoBehaviour
 
     private float goodBadTx; // Good 0 -> 100  |  Bad -100 -> 0
 
+    [Header("UI")]
     public Image jaugeGood;
     public Image jaugeBad;
-
     public GameObject good;
     public GameObject bad;
+    public TMPro.TextMeshProUGUI textTree;
+    public TMPro.TextMeshProUGUI textRock;
+    public TMPro.TextMeshProUGUI textBox;
 
     public TMPro.TextMeshProUGUI text;
     public CanvasGroup dialogue;
@@ -23,9 +26,7 @@ public class Game : MonoBehaviour
     public int tree = 0;
     public int rock = 0;
     public int box = 0;
-    public TMPro.TextMeshProUGUI textTree;
-    public TMPro.TextMeshProUGUI textRock;
-    public TMPro.TextMeshProUGUI textBox;
+
 
     public Material mat;
 
@@ -71,7 +72,7 @@ public class Game : MonoBehaviour
 
         Destroy(go, 2f);
 
-        goodBadTx -= 20;
+        goodBadTx -= 10;
         UpdateUI();
     }
 
