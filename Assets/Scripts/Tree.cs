@@ -7,7 +7,7 @@ public class Tree : Recoltable
     // Start is called before the first frame update
     void Start()
     {
-        
+        type = TypeRessource.Tree;
     }
 
     // Update is called once per frame
