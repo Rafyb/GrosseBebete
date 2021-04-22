@@ -11,10 +11,14 @@ public class Interactible : MonoBehaviour
     public bool takable = false;
     public bool blessed = false;
     public bool interact = true;
+    [Header("Quest")]
+    public bool quest = false;
+    public int nb;
+    public TypeRessource type;
 
     void OnMouseDown()
     {
-        if(interact)Game.Instance.OpenText(message);
+        if(interact)Game.Instance.OpenText(this);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,6 +33,23 @@ public class Interactible : MonoBehaviour
         }
     }
 
+    public void DoQuest()
+    {
+        if (!quest) return;
+        if(type == TypeRessource.Tree && Game.Instance.tree >= nb)
+        {
+            Game.Instance.tree -= nb;
+            Game.Instance.CloseText();
+            Game.Instance.Help(transform);
+        }
+        if (type == TypeRessource.Box && Game.Instance.box >= nb)
+        {
+            Game.Instance.box -= nb;
+            Game.Instance.CloseText();
+            Game.Instance.Help(transform);
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (!takable) return;
@@ -39,6 +60,7 @@ public class Interactible : MonoBehaviour
             player.Collectables.Remove(gameObject);
 
         }
+        
     }
 
     void Update()

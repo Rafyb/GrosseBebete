@@ -32,6 +32,8 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
+        if (Game.Instance.locked) return;
+
         anim.SetFloat("speed", Vector3.Distance(tf.position, dest));
 
         if (Input.GetMouseButtonDown(1))
@@ -118,7 +120,7 @@ public class Controller : MonoBehaviour
             {
                 if (!item.recoltable) return;
                 if (item.type == TypeRessource.Tree) Game.Instance.tree++;
-
+                if (item.type == TypeRessource.Box) Game.Instance.box++;
                 Collectables.RemoveAt(i);
                 Destroy(gameobject);
                 Game.Instance.UpdateUI();

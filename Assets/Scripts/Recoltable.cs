@@ -11,11 +11,11 @@ public class Recoltable : MonoBehaviour
     public bool recoltable = false;
     public TypeRessource type;
     private Color color;
-    public GameObject mesh;
+
 
     private void Start()
     {
-        color = mesh.GetComponent<Renderer>().material.color;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,7 +24,7 @@ public class Recoltable : MonoBehaviour
         if (other.TryGetComponent<Controller>(out player))
         {
             player.Collectables.Add(gameObject);
-            mesh.GetComponent<Renderer>().material.color = Color.green;
+
         }
     }
 
@@ -34,7 +34,7 @@ public class Recoltable : MonoBehaviour
         if (other.TryGetComponent<Controller>(out player))
         {
             player.Collectables.Remove(gameObject);
-            mesh.GetComponent<Renderer>().material.color = color;
+
         }
     }
 }
