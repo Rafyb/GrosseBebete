@@ -11,6 +11,10 @@ public class Controller : MonoBehaviour
 
     public float speed = 100f;
 
+    public Cinemachine.CinemachineVirtualCamera cam;
+
+    public GameObject targetedPrefab;
+    private GameObject targeted;
 
     void Start()
     {
@@ -29,11 +33,27 @@ public class Controller : MonoBehaviour
 
             if (playerPlane.Raycast(ray, out hitdist))
             {
+                if(targeted != null)
+                {
+                    Destroy(targeted);
+                }
+
                 //Deplacement
                 dest = ray.GetPoint(hitdist);
                 dest.y = tf.position.y;
+
+                targeted = Instantiate(targetedPrefab, dest, Quaternion.identity);
+
+
                 dist = Vector3.Distance(tf.position, dest);
-                tf.DOMove(dest, dist * (1/speed) );
+
+                tf.DOKill();
+                tf.DOMove(dest, dist * (1/speed) ).OnComplete( ()=> {
+                    if (targeted != null)
+                    {
+                        Destroy(targeted);
+                    }
+                });
 
                 // Rotation
                 Vector3 targetPoint = ray.GetPoint(hitdist);
@@ -42,6 +62,14 @@ public class Controller : MonoBehaviour
             }
         }
 
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
+        {
+            if (cam.m_Lens.OrthographicSize < 20) cam.m_Lens.OrthographicSize++;
+        }
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
+        {
+            if(cam.m_Lens.OrthographicSize > 5 ) cam.m_Lens.OrthographicSize--;
+        }
 
 
 
