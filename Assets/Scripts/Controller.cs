@@ -32,6 +32,8 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
+        if (Game.Instance.locked) return;
+
         anim.SetFloat("speed", Vector3.Distance(tf.position, dest));
 
         if (Input.GetMouseButtonDown(1))

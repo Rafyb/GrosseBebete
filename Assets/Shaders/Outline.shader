@@ -42,7 +42,7 @@ Shader "Outline"
 		ENDCG
 		
 
-		Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" }
+		Tags{ "RenderType" = "Opaque"  "Queue" = "Geometry+0" "IsEmissive" = "true"  }
 		Cull Back
 		CGPROGRAM
 		#pragma target 3.0
@@ -64,7 +64,7 @@ Shader "Outline"
 
 		void surf( Input i , inout SurfaceOutputStandard o )
 		{
-			o.Albedo = _ColorBase.rgb;
+			o.Emission = _ColorBase.rgb;
 			o.Alpha = 1;
 		}
 
@@ -75,7 +75,7 @@ Shader "Outline"
 }
 /*ASEBEGIN
 Version=18500
-0;0;1920;1019;1913.475;503.1102;1.3;False;False
+-177;322;1920;696;1653.524;500.6919;1.3;True;False
 Node;AmplifyShaderEditor.RangedFloatNode;11;-831.0798,453.5641;Inherit;False;Property;_TailleOutline;Taille Outline;2;0;Create;True;0;0;False;0;False;2;0;0;10;0;1;FLOAT;0
 Node;AmplifyShaderEditor.ColorNode;1;-969.3364,253.241;Inherit;False;Property;_FresnelColor;Fresnel Color;0;0;Create;True;0;0;False;0;False;1,0,0,0;1,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.OutlineNode;10;-476.1806,371.6642;Inherit;False;0;True;None;0;0;Front;3;0;FLOAT3;0,0,0;False;2;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT3;0
@@ -88,7 +88,7 @@ WireConnection;10;0;1;0
 WireConnection;10;1;11;0
 WireConnection;13;0;14;0
 WireConnection;13;1;10;0
-WireConnection;0;0;12;0
+WireConnection;0;2;12;0
 WireConnection;0;11;13;0
 ASEEND*/
-//CHKSM=279A0EEC2BC253391B494723F7BDF84C0E0FBC86
+//CHKSM=8983189E47A6AB861B798CF49655FEBAB8FAC51B
