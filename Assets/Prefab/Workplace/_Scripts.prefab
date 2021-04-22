@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7962994865506562732}
+  - component: {fileID: 1301991995}
   m_Layer: 0
   m_Name: _Scripts
   m_TagString: Untagged
@@ -30,3 +31,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1301991995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7962994865506562733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4abc3e88655ed56469da022247b247e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tree: 0
+  rock: 0
+  box: 0
+  locked: 0
+  cornes: []
+  ailes: []
+  cornesPos: {fileID: 0}
+  ailesPos: {fileID: 0}
+  mat: {fileID: 2100000, guid: 728de5ef7df302f4d946fb9386e6494d, type: 2}
+  jaugeGood: {fileID: 0}
+  jaugeBad: {fileID: 0}
+  textTree: {fileID: 0}
+  textRock: {fileID: 0}
+  textBox: {fileID: 0}
+  good: {fileID: 1067172716117578439, guid: 7eb44ca8cf9c42e48ae7aeca9089e2c1, type: 3}
+  bad: {fileID: 1067172716117578439, guid: d87c658940a9b53468b8840e935927bc, type: 3}
+  text: {fileID: 0}
+  dialogue: {fileID: 0}
+  buttonQuest: {fileID: 0}
+  canvasEnd: {fileID: 0}
+  textEnd: {fileID: 0}
