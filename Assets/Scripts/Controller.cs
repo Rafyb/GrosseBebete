@@ -16,9 +16,13 @@ public class Controller : MonoBehaviour
     public GameObject targetedPrefab;
     private GameObject targeted;
 
+
+
     private Interactible villager;
 
     public List<GameObject> Collectables = new List<GameObject>();
+    public Animator anim;
+    public Transform hand;
 
     void Start()
     {
@@ -28,6 +32,7 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
+        anim.SetFloat("speed", Vector3.Distance(tf.position, dest));
 
         if (Input.GetMouseButtonDown(1))
         {
@@ -47,7 +52,6 @@ public class Controller : MonoBehaviour
                 dest.y = tf.position.y;
 
                 targeted = Instantiate(targetedPrefab, dest, Quaternion.identity);
-
 
                 dist = Vector3.Distance(tf.position, dest);
 
@@ -92,14 +96,21 @@ public class Controller : MonoBehaviour
     {
         Recoltable item;
 
-        for(int i = 0; i < Collectables.Count; i++)
+        tf.DOKill();
+        dest = tf.position;
+
+        for (int i = 0; i < Collectables.Count; i++)
         {
             GameObject gameobject = Collectables[i];
 
             if (gameobject.TryGetComponent<Interactible>(out villager))
             {
-                villager.transform.parent = transform;
+                villager.transform.parent = hand;
+                villager.GetComponent<Rigidbody>().isKinematic = true;
+                villager.transform.localPosition = Vector3.zero;
                 Collectables.RemoveAt(i);
+                anim.SetTrigger("Take");
+                anim.SetBool("Taked", true);
                 return;
             }
 
@@ -118,6 +129,9 @@ public class Controller : MonoBehaviour
     }
     private void PutVillager()
     {
+        villager.GetComponent<Rigidbody>().isKinematic = false;
+        anim.SetTrigger("Put");
+        anim.SetBool("Taked", false);
         villager.transform.parent = null;
         villager = null;
 
@@ -125,8 +139,13 @@ public class Controller : MonoBehaviour
 
     private void ThrowVillager()
     {
+        Game.Instance.BadAct(villager.gameObject.transform);
+
+        villager.GetComponent<Rigidbody>().isKinematic = false;
+        anim.SetTrigger("Throw");
+        anim.SetBool("Taked", false);
         villager.transform.parent = null;
-        villager.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(10f,20f), 10f ,Random.Range(10f, 20f)), ForceMode.Impulse);
+        villager.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(-1,1)*15f, 10f , Random.Range(-1, 1) * 15f), ForceMode.Impulse);
         villager = null;
     }
 
