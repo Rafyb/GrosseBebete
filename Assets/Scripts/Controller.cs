@@ -16,7 +16,7 @@ public class Controller : MonoBehaviour
     public GameObject targetedPrefab;
     private GameObject targeted;
 
-    private GameObject villager;
+    private Interactible villager;
 
     public List<GameObject> Collectables = new List<GameObject>();
 
@@ -81,25 +81,53 @@ public class Controller : MonoBehaviour
             else PutVillager();
         }
 
-        if (Input.GetButtonDown("F"))
+        if (Input.GetButtonDown("R"))
         {
-            if (villager == null) ThrowVillager();
+            if (villager != null) ThrowVillager();
         }
 
     }
 
     private void GetCollectable()
     {
+        Recoltable item;
+
+        for(int i = 0; i < Collectables.Count; i++)
+        {
+            GameObject gameobject = Collectables[i];
+
+            if (gameobject.TryGetComponent<Interactible>(out villager))
+            {
+                villager.transform.parent = transform;
+                Collectables.RemoveAt(i);
+                return;
+            }
+
+            else if (gameobject.TryGetComponent<Recoltable>(out item))
+            {
+                if (!item.recoltable) return;
+                if (item.type == TypeRessource.Tree) Game.Instance.tree++;
+
+                Collectables.RemoveAt(i);
+                Destroy(gameobject);
+                Game.Instance.UpdateUI();
+                return;
+            }
+        }
 
     }
     private void PutVillager()
     {
+        villager.transform.parent = null;
+        villager = null;
 
     }
 
     private void ThrowVillager()
     {
-
+        villager.transform.parent = null;
+        villager.GetComponent<Rigidbody>().AddForce(new Vector3(Random.Range(10f,20f), 10f ,Random.Range(10f, 20f)), ForceMode.Impulse);
+        villager = null;
     }
 
 
