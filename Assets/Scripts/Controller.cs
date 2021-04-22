@@ -16,6 +16,10 @@ public class Controller : MonoBehaviour
     public GameObject targetedPrefab;
     private GameObject targeted;
 
+    private GameObject villager;
+
+    public List<GameObject> Collectables = new List<GameObject>();
+
     void Start()
     {
         tf = GetComponent<Transform>();
@@ -71,10 +75,32 @@ public class Controller : MonoBehaviour
             if(cam.m_Lens.OrthographicSize > 5 ) cam.m_Lens.OrthographicSize--;
         }
 
+        if(Input.GetButtonDown("E"))
+        {
+            if (villager == null) GetCollectable();
+            else PutVillager();
+        }
 
-
-
+        if (Input.GetButtonDown("F"))
+        {
+            if (villager == null) ThrowVillager();
+        }
 
     }
-    
+
+    private void GetCollectable()
+    {
+
+    }
+    private void PutVillager()
+    {
+
+    }
+
+    private void ThrowVillager()
+    {
+
+    }
+
+
 }
