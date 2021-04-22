@@ -25,7 +25,7 @@ public class Controller : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(1))
         {
             Plane playerPlane = new Plane(Vector3.up, tf.position);
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
