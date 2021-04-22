@@ -9,11 +9,12 @@ public class Interactible : MonoBehaviour
     public string message = "";
 
     public bool takable = false;
-
+    public bool blessed = false;
+    public bool interact = true;
 
     void OnMouseDown()
     {
-        Game.Instance.OpenText(message);
+        if(interact)Game.Instance.OpenText(message);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,6 +38,18 @@ public class Interactible : MonoBehaviour
         {
             player.Collectables.Remove(gameObject);
 
+        }
+    }
+
+    void Update()
+    {
+        if (transform.rotation.z > 1f || transform.rotation.z < 0f)
+        {
+            if (takable && !blessed)
+            {
+                Game.Instance.BadAct(transform);
+                blessed = true;
+            }
         }
     }
 }

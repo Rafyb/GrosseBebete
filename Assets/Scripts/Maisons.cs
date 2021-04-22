@@ -15,6 +15,7 @@ public class Maisons : MonoBehaviour
             {
                 rb.isKinematic = false;
             }
+            Game.Instance.BadAct(gameObject.transform);
             Destroy(gameObject);
         }
     }

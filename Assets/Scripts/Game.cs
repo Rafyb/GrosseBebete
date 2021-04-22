@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
     [HideInInspector] public static Game Instance;
 
     private float goodBadTx; // Good 0 -> 100  |  Bad -100 -> 0
+
+    public Image jaugeGood;
+    public Image jaugeBad;
 
     public GameObject good;
     public GameObject bad;
@@ -29,21 +33,30 @@ public class Game : MonoBehaviour
         Instance = this;
     }
 
+    void Start()
+    {
+        UpdateUI();
+    }
+
     public void Help(Transform tf)
     {
         GameObject go = Instantiate(good,tf.position,tf.rotation);
+        go.transform.parent = tf;
         go.transform.localScale = Vector3.zero;
+
 
         go.transform.DOMoveY(go.transform.position.y+2,1f).OnComplete(() => { go.transform.DOMoveY( go.transform.position.y + 2f, 1f); });
         go.transform.DOScale(1, 1f).OnComplete(() => { go.transform.DOScale(0, 1f); });
 
         goodBadTx += 10;
+        UpdateUI();
     }
 
     public void BadAct(Transform tf)
     {
         GameObject go = Instantiate(bad, tf.position, tf.rotation);
         go.transform.localScale = Vector3.zero;
+        go.transform.parent = tf;
 
         go.transform.DOMoveY(go.transform.position.y + 2, 1f).OnComplete(() => { go.transform.DOMoveY(go.transform.position.y + 2f, 1f); });
         go.transform.DOScale(1, 1f).OnComplete(() => { go.transform.DOScale(0, 1f); });
@@ -51,6 +64,7 @@ public class Game : MonoBehaviour
         Destroy(go, 2f);
 
         goodBadTx -= 10;
+        UpdateUI();
     }
 
 
@@ -77,6 +91,19 @@ public class Game : MonoBehaviour
         textBox.text = "X " + box;
         textTree.text = "X " + tree;
         textRock.text = "X " + rock;
+
+        jaugeBad.fillAmount = 0;
+        jaugeGood.fillAmount = 0;
+
+        if (goodBadTx > 0)
+        {
+            jaugeGood.fillAmount = goodBadTx / 100;
+        }
+        else if (goodBadTx < 0)
+        {
+            jaugeBad.fillAmount = (-1*goodBadTx) / 100;
+        }
+            
     }
 
 }
