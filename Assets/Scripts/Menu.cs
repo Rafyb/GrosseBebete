@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public GameObject credit;
+    public GameObject commandes;
 
     private void Start()
     {
-        credit.SetActive(false);
+        commandes.SetActive(false);
     }
     public void Play()
     {
@@ -18,12 +18,12 @@ public class Menu : MonoBehaviour
 
     public void Credit()
     {
-        credit.SetActive(true);
+        commandes.SetActive(true);
     }
 
     public void QuitCredit()
     {
-        credit.SetActive(false);
+        commandes.SetActive(false);
     }
 
     public void Quit()
