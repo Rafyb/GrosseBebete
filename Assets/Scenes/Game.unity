@@ -252,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99d6999543412734eb650c7f59cdee39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commandes: {fileID: 1574339223}
+  commandes: {fileID: 0}
 --- !u!114 &114939992
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -416,7 +416,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1090920525115447069}
     m_Modifications:
     - target: {fileID: 299260976520053969, guid: 3fd25dab408d5534d9d81ea693fd135a,
         type: 3}
@@ -446,7 +446,7 @@ PrefabInstance:
     - target: {fileID: 1111510500764360299, guid: 3fd25dab408d5534d9d81ea693fd135a,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1111510500764360299, guid: 3fd25dab408d5534d9d81ea693fd135a,
         type: 3}
@@ -461,7 +461,7 @@ PrefabInstance:
     - target: {fileID: 1111510500764360299, guid: 3fd25dab408d5534d9d81ea693fd135a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1111510500764360299, guid: 3fd25dab408d5534d9d81ea693fd135a,
         type: 3}
@@ -480,12 +480,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd25dab408d5534d9d81ea693fd135a, type: 3}
---- !u!1 &260452243 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1949069041228966101, guid: fd0ba47c48f7bec438c1fc2783fcd0e7,
-    type: 3}
-  m_PrefabInstance: {fileID: 887967448}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &407456498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -833,7 +827,7 @@ Transform:
   - {fileID: 963194228}
   - {fileID: 118743904}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &830601573 stripped
 Animator:
@@ -1275,7 +1269,7 @@ Transform:
   - {fileID: 407456499}
   - {fileID: 450073743}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1301991995 stripped
 MonoBehaviour:
@@ -1537,12 +1531,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1758087311 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1949069039868992586, guid: fd0ba47c48f7bec438c1fc2783fcd0e7,
-    type: 3}
-  m_PrefabInstance: {fileID: 887967448}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1781518390
 GameObject:
   m_ObjectHideFlags: 0
@@ -1876,6 +1864,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74ac99e9cbca0574cb169a361e5c3696, type: 3}
+--- !u!4 &1090920525115447069 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1090920526536345184, guid: 74ac99e9cbca0574cb169a361e5c3696,
+    type: 3}
+  m_PrefabInstance: {fileID: 1090920525115447068}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7214707590472057145
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1974,14 +1968,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
-      propertyPath: cornes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
-      propertyPath: ailes.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
       propertyPath: cornesPos
       value: 
       objectReference: {fileID: 736911869}
@@ -1989,6 +1975,10 @@ PrefabInstance:
       propertyPath: ailesPos
       value: 
       objectReference: {fileID: 931088659}
+    - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 830601573}
     - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
       propertyPath: jaugeGood
       value: 
@@ -2029,48 +2019,6 @@ PrefabInstance:
       propertyPath: textEnd
       value: 
       objectReference: {fileID: 711549715}
-    - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
-      propertyPath: postProcBad
-      value: 
-      objectReference: {fileID: 260452243}
-    - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
-      propertyPath: postProcGood
-      value: 
-      objectReference: {fileID: 1758087311}
-    - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
-      propertyPath: anim
-      value: 
-      objectReference: {fileID: 830601573}
-    - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
-      propertyPath: cornes.Array.data[0]
-      value: 
-      objectReference: {fileID: 919132149155446097, guid: 35b6614aa1a84b54aae7d343bf7e6915,
-        type: 3}
-    - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
-      propertyPath: cornes.Array.data[1]
-      value: 
-      objectReference: {fileID: 919132149155446097, guid: 87714d2dfe5575243a9b0e75c45cd10a,
-        type: 3}
-    - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
-      propertyPath: cornes.Array.data[2]
-      value: 
-      objectReference: {fileID: 919132149155446097, guid: 3e34eca6c21daf148a8f4dbfdfea930a,
-        type: 3}
-    - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
-      propertyPath: ailes.Array.data[0]
-      value: 
-      objectReference: {fileID: 919132149155446097, guid: 90ca6eea67269b0429f7add722b950de,
-        type: 3}
-    - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
-      propertyPath: ailes.Array.data[1]
-      value: 
-      objectReference: {fileID: 919132149155446097, guid: f64d122233d4d454eb957a43203f9ccb,
-        type: 3}
-    - target: {fileID: 1301991995, guid: 2d5f1bcc0f87a434a9e46fe309715af9, type: 3}
-      propertyPath: ailes.Array.data[2]
-      value: 
-      objectReference: {fileID: 919132149155446097, guid: 11f38ee3be947484e9f4e120d72a90df,
-        type: 3}
     - target: {fileID: 7962994865506562732, guid: 2d5f1bcc0f87a434a9e46fe309715af9,
         type: 3}
       propertyPath: m_LocalPosition.x

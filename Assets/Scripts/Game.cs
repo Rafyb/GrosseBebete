@@ -12,6 +12,8 @@ public class Game : MonoBehaviour
     [HideInInspector] public int box = 0;
     [HideInInspector] public bool locked = false;
 
+    
+
     private float goodBadTx; // Good 0 -> 100  |  Bad -100 -> 0
 
     [Header("Components")]
@@ -23,6 +25,7 @@ public class Game : MonoBehaviour
     private GameObject instantiateCorne;
     public Material mat;
     public Animator anim;
+    public MusicManager music;
 
     [Header("UI Top")]
     public Image jaugeGood;
@@ -127,6 +130,8 @@ public class Game : MonoBehaviour
 
         if (goodBadTx > 0)
         {
+            music.Desenclenche();
+
             jaugeGood.fillAmount = goodBadTx / 100;
             mat.SetColor("_EmissionColor", Color.gray);
             anim.SetBool("Dark", false);
@@ -146,7 +151,8 @@ public class Game : MonoBehaviour
         }
         else if (goodBadTx < 0)
         {
-            
+            music.Enclenche();
+
             jaugeBad.fillAmount = (-1*goodBadTx) / 100;
             mat.SetColor("_EmissionColor", Color.black);
             anim.SetBool("Dark", true);
