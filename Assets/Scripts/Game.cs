@@ -20,6 +20,7 @@ public class Game : MonoBehaviour
     public Transform cornesPos;
     public Transform ailesPos;
     public Material mat;
+    public Animator anim;
 
     [Header("UI Top")]
     public Image jaugeGood;
@@ -36,7 +37,6 @@ public class Game : MonoBehaviour
     public TMPro.TextMeshProUGUI text;
     public CanvasGroup dialogue;
     public GameObject buttonQuest;
-
 
 
     [Header("UI End")]
@@ -124,11 +124,13 @@ public class Game : MonoBehaviour
         {
             jaugeGood.fillAmount = goodBadTx / 100;
             mat.SetColor("_EmissionColor", Color.gray);
+            anim.SetBool("Dark", false);
         }
         else if (goodBadTx < 0)
         {
             jaugeBad.fillAmount = (-1*goodBadTx) / 100;
             mat.SetColor("_EmissionColor", Color.black);
+            anim.SetBool("Dark", true);
         }
             
     }

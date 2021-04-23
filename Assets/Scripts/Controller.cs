@@ -119,8 +119,12 @@ public class Controller : MonoBehaviour
             else if (gameobject.TryGetComponent<Recoltable>(out item))
             {
                 if (!item.recoltable) return;
+
+                Instantiate(item.fx, item.transform.position, Quaternion.identity);
+
                 if (item.type == TypeRessource.Tree) Game.Instance.tree++;
                 if (item.type == TypeRessource.Box) Game.Instance.box++;
+                
                 Collectables.RemoveAt(i);
                 Destroy(gameobject);
                 Game.Instance.UpdateUI();
