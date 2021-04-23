@@ -7,32 +7,43 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
     [HideInInspector] public static Game Instance;
+    [HideInInspector] public int tree = 0;
+    [HideInInspector] public int rock = 0;
+    [HideInInspector] public int box = 0;
+    [HideInInspector] public bool locked = false;
 
     private float goodBadTx; // Good 0 -> 100  |  Bad -100 -> 0
 
+    [Header("Components")]
+    public GameObject[] cornes;
+    public GameObject[] ailes;
+    public Transform cornesPos;
+    public Transform ailesPos;
+    public Material mat;
+
+    [Header("UI Top")]
     public Image jaugeGood;
     public Image jaugeBad;
-
-    public GameObject good;
-    public GameObject bad;
-
-    public TMPro.TextMeshProUGUI text;
-    public CanvasGroup dialogue;
-    public GameObject buttonQuest;
-
-    public int tree = 0;
-    public int rock = 0;
-    public int box = 0;
     public TMPro.TextMeshProUGUI textTree;
     public TMPro.TextMeshProUGUI textRock;
     public TMPro.TextMeshProUGUI textBox;
 
-    public Material mat;
+    [Header("UI Tween")]
+    public GameObject good;
+    public GameObject bad;
 
+    [Header("UI Dialogue")]
+    public TMPro.TextMeshProUGUI text;
+    public CanvasGroup dialogue;
+    public GameObject buttonQuest;
+
+
+
+    [Header("UI End")]
     public GameObject canvasEnd;
     public TMPro.TextMeshProUGUI textEnd;
 
-    public bool locked = false;
+
 
     private void Awake()
     {
@@ -71,7 +82,7 @@ public class Game : MonoBehaviour
 
         Destroy(go, 2f);
 
-        goodBadTx -= 20;
+        goodBadTx -= 10;
         UpdateUI();
     }
 
