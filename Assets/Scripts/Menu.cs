@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour
 
     private void Start()
     {
-        commandes.SetActive(false);
+        commandes?.SetActive(false);
     }
     public void Play()
     {
