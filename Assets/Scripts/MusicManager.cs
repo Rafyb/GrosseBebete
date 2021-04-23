@@ -35,7 +35,7 @@ public class MusicManager : MonoBehaviour
         audioSource.volume += 0.1f;
         yield return new WaitForSeconds(1.0f);
 
-        if (enclenched && audioSource.volume<0.1f) Up();
+        if (enclenched && audioSource.volume < 1f) StartCoroutine(Up());
     }
 
     public void Desenclenche()
@@ -43,5 +43,14 @@ public class MusicManager : MonoBehaviour
         if (!enclenched) return;
 
         enclenched = false;
+        StartCoroutine(Down());
+    }
+
+    IEnumerator Down()
+    {
+        audioSource.volume -= 0.1f;
+        yield return new WaitForSeconds(1.0f);
+
+        if (!enclenched && audioSource.volume > 0f) StartCoroutine(Down());
     }
 }
