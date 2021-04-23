@@ -19,7 +19,10 @@ public class Game : MonoBehaviour
     public GameObject[] ailes;
     public Transform cornesPos;
     public Transform ailesPos;
+    private GameObject instantiateAile;
+    private GameObject instantiateCorne;
     public Material mat;
+    public Animator anim;
 
     [Header("UI Top")]
     public Image jaugeGood;
@@ -36,7 +39,6 @@ public class Game : MonoBehaviour
     public TMPro.TextMeshProUGUI text;
     public CanvasGroup dialogue;
     public GameObject buttonQuest;
-
 
 
     [Header("UI End")]
@@ -117,6 +119,9 @@ public class Game : MonoBehaviour
         jaugeBad.fillAmount = 0;
         jaugeGood.fillAmount = 0;
 
+        if (instantiateAile != null) Destroy(instantiateAile);
+        if (instantiateCorne != null) Destroy(instantiateCorne);
+
         if (goodBadTx <= -100) End("Tu as choisi le coté Obscur");
         if (goodBadTx >= 100) End("Tu as choisi la voie de la sagesse");
 
@@ -124,11 +129,18 @@ public class Game : MonoBehaviour
         {
             jaugeGood.fillAmount = goodBadTx / 100;
             mat.SetColor("_EmissionColor", Color.gray);
+            anim.SetBool("Dark", false);
+
+            if (goodBadTx >= 30) instantiateAile = Instantiate(ailes[0], ailesPos.position, Quaternion.identity);
+            if (goodBadTx >= 60) instantiateAile = Instantiate(ailes[1], ailesPos.position, Quaternion.identity);
+            if (goodBadTx >= 90) instantiateAile = Instantiate(ailes[2], ailesPos.position, Quaternion.identity);
         }
         else if (goodBadTx < 0)
         {
+            
             jaugeBad.fillAmount = (-1*goodBadTx) / 100;
             mat.SetColor("_EmissionColor", Color.black);
+            anim.SetBool("Dark", true);
         }
             
     }

@@ -16,6 +16,8 @@ public class Interactible : MonoBehaviour
     public int nb;
     public TypeRessource type;
 
+    public GameObject fx;
+
     void OnMouseDown()
     {
         if(interact)Game.Instance.OpenText(this);
@@ -69,6 +71,7 @@ public class Interactible : MonoBehaviour
         {
             if (takable && !blessed)
             {
+                fx.SetActive(true);
                 Game.Instance.BadAct(transform);
                 blessed = true;
             }

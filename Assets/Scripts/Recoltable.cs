@@ -12,6 +12,7 @@ public class Recoltable : MonoBehaviour
     public TypeRessource type;
     private Color color;
 
+    public GameObject fx;
 
     private void Start()
     {

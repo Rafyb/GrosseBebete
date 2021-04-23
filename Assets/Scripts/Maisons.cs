@@ -5,6 +5,7 @@ using UnityEngine;
 public class Maisons : MonoBehaviour
 {
     public List<Rigidbody> rbs;
+    public GameObject fx;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -15,6 +16,7 @@ public class Maisons : MonoBehaviour
             {
                 rb.isKinematic = false;
             }
+            Instantiate(fx, transform.position, Quaternion.identity);
             Game.Instance.BadAct(gameObject.transform);
             Destroy(gameObject);
         }
