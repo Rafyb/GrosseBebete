@@ -21,6 +21,11 @@ public class Menu : MonoBehaviour
         credit.SetActive(true);
     }
 
+    public void QuitCredit()
+    {
+        credit.SetActive(false);
+    }
+
     public void Quit()
     {
         Application.Quit();
