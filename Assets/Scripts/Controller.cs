@@ -53,7 +53,7 @@ public class Controller : MonoBehaviour
                 dest = ray.GetPoint(hitdist);
                 dest.y = tf.position.y;
 
-                targeted = Instantiate(targetedPrefab, dest, Quaternion.identity);
+                //targeted = Instantiate(targetedPrefab, dest, Quaternion.identity);
 
                 dist = Vector3.Distance(tf.position, dest);
 
