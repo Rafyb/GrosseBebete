@@ -69,7 +69,7 @@ public class Game : MonoBehaviour
         go.transform.DOMoveY(go.transform.position.y+2,1f).OnComplete(() => { go.transform.DOMoveY( go.transform.position.y + 2f, 1f); });
         go.transform.DOScale(1, 1f).OnComplete(() => { go.transform.DOScale(0, 1f); });
 
-        goodBadTx += 20;
+        goodBadTx += 15;
         UpdateUI();
     }
 
@@ -131,9 +131,18 @@ public class Game : MonoBehaviour
             mat.SetColor("_EmissionColor", Color.gray);
             anim.SetBool("Dark", false);
 
-            if (goodBadTx >= 30) instantiateAile = Instantiate(ailes[0], ailesPos.position, Quaternion.identity);
-            if (goodBadTx >= 60) instantiateAile = Instantiate(ailes[1], ailesPos.position, Quaternion.identity);
-            if (goodBadTx >= 90) instantiateAile = Instantiate(ailes[2], ailesPos.position, Quaternion.identity);
+            if (goodBadTx >= 30) instantiateAile = Instantiate(ailes[0], Vector3.zero, Quaternion.identity);
+            if (goodBadTx >= 60) instantiateAile = Instantiate(ailes[1], Vector3.zero, Quaternion.identity);
+            if (goodBadTx >= 90) instantiateAile = Instantiate(ailes[2], Vector3.zero, Quaternion.identity);
+            if (instantiateAile != null)
+            {
+                instantiateAile.transform.parent = ailesPos;
+                instantiateAile.transform.localScale = new Vector3(1f, 1f, 1f);
+                instantiateAile.transform.localPosition = new Vector3(0f, -1f, 0f);
+
+            }
+
+
         }
         else if (goodBadTx < 0)
         {
@@ -141,6 +150,17 @@ public class Game : MonoBehaviour
             jaugeBad.fillAmount = (-1*goodBadTx) / 100;
             mat.SetColor("_EmissionColor", Color.black);
             anim.SetBool("Dark", true);
+
+            if (goodBadTx <= -30) instantiateCorne = Instantiate(cornes[0], Vector3.zero, Quaternion.identity);
+            if (goodBadTx <= -60) instantiateCorne = Instantiate(cornes[1], Vector3.zero, Quaternion.identity);
+            if (goodBadTx <= -90) instantiateCorne = Instantiate(cornes[2], Vector3.zero, Quaternion.identity);
+            if (instantiateCorne != null)
+            {
+                instantiateCorne.transform.parent = cornesPos;
+                instantiateCorne.transform.localScale = new Vector3(1f, 1f, 1f);
+                instantiateCorne.transform.localPosition = new Vector3(0f, -4f, 0f);
+
+            }
         }
             
     }
